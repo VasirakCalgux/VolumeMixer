@@ -78,7 +78,6 @@
 }
 - (void)updateVisuals {
     CGFloat maxScale = _boostEnabled ? 20.0 : 1.0;
-    CGFloat displayScale = MIN(_curScale, maxScale);
     
     // Volume Boost: Visual feedback (Orange color when scale > 100%)
     if(_curScale > 1.0) {
