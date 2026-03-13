@@ -9,16 +9,6 @@
 - **Rootless Support**: Fully compatible with Dopamine and other rootless jailbreaks.
 - **Control Center Integration**: Access the volume mixer directly from your Control Center.
 
-## Project Structure
-- **`MRYIPC/`**: Inter-process communication library used for sync between the tweak and apps.
-- **`AltListDependencies/`**: Source files for the AltList framework, embedded for stable builds.
-- **`volumemixerpref/`**: Preference bundle source (Settings app interface).
-- **`ccvolumemixer/`**: Control Center module source.
-- **`Tweak.xm` / `TweakSB.xm`**: Core tweak logic for SpringBoard and application hooks.
-- **`VMHUDView.m`**: Custom HUD UI logic with Volume Boost visual feedback.
-- **`Makefile`**: Theos build system configuration (tuned for iOS 16.5 SDK).
-- **`control`**: Package metadata and dependency information.
-
 ## Credits
 - Original Developer: [brendonjkding](https://github.com/brendonjkding)
 - Rootless & Volume Boost Update: [vasirakcalgux](https://github.com/vasirakcalgux)
