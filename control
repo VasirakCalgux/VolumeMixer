@@ -1,0 +1,12 @@
+Package: com.vasirakcalgux.volumemixer
+Name: VolumeMixer
+Depends: mobilesubstrate, preferenceloader, com.opa334.altlist
+Version: 0.0.7-1.1.0
+Architecture: iphoneos-arm64
+Description: Volume control for individual app with volume boost for rootless jailbreak
+Maintainer: vasirakcalgux (Fork Maintainer)
+Author: Brend0n (Original), vasirakcalgux (Rootless/Boost Update)
+Section: Tweaks
+Icon: file:///Library/PreferenceBundles/volumemixer.bundle/icon@2x.png
+Depiction: https://github.com/vasirakcalgux/VolumeMixer
+SileoDepiction: https://github.com/vasirakcalgux/VolumeMixer

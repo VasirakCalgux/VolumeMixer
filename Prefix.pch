@@ -1,0 +1,37 @@
+#ifdef __OBJC__
+
+#define kBundlePath @THEOS_PACKAGE_INSTALL_PREFIX"/Library/PreferenceBundles/volumemixer.bundle"
+
+#define kWebKitBundleId @"com.apple.WebKit.WebContent"
+
+#define VMNSLocalizedString(key) NSLocalizedStringFromTableInBundle((key), @"Root", [NSBundle bundleWithPath:kBundlePath], nil)
+
+#define kPrefAppsKey @"com.vasirakcalgux.volumemixer_apps"
+#define kPrefWebEnabledKey @"com.vasirakcalgux.volumemixer_webEnabled"
+#define kPrefWebAudioUnitHookEnabledKey @"com.vasirakcalgux.volumemixer_webAudioUnitHookEnabled"
+#define kPrefByVolumeButtonKey @"com.vasirakcalgux.volumemixer_byVolumeButton"
+#define kPrefIsHideInactiveAppsKey @"com.vasirakcalgux.volumemixer_isHideInactiveApps"
+#define kPrefAudioMixEnabledKey @"com.vasirakcalgux.volumemixer_audioMixEnabled"
+#define kPrefAudiomixAppsKey @"com.vasirakcalgux.volumemixer_audiomixApps"
+#define kPrefPanelPortraitYKey @"com.vasirakcalgux.volumemixer_panelPortraitY"
+#define kPrefPanelLandScapeYKey @"com.vasirakcalgux.volumemixer_panelLandScapeY"
+#define kPrefIsHideBackgroundKey @"com.vasirakcalgux.volumemixer_isHideBackground"
+#define kPrefShowsOnLockScreenKey @"com.vasirakcalgux.volumemixer_showsOnLockScreen"
+
+#define kPrefScalesKey @"com.vasirakcalgux.volumemixer_scales"
+#define kPrefBoostEnabledKey @"com.vasirakcalgux.volumemixer_boostEnabled"
+#define kPrefDidShowReleaseAlertKey @"com.vasirakcalgux.volumemixer_didShowReleaseAlert"
+
+#define kAllPrefKeys @[kPrefAppsKey, kPrefWebEnabledKey, kPrefWebAudioUnitHookEnabledKey, kPrefByVolumeButtonKey, kPrefIsHideInactiveAppsKey, kPrefAudioMixEnabledKey, kPrefAudiomixAppsKey, kPrefPanelPortraitYKey, kPrefPanelLandScapeYKey, kPrefIsHideBackgroundKey, kPrefShowsOnLockScreenKey, kPrefScalesKey, kPrefDidShowReleaseAlertKey]
+
+#if DEBUG
+#else
+#define NSLog(FORMAT, ...)
+#endif
+
+#define MRYIPCCenter VM_MRYIPCCenter
+#define _MRYIPCMethod VM__MRYIPCMethod
+
+#import <UIKit/UIKit.h>
+
+#endif //__OBJC__
