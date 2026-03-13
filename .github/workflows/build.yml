@@ -20,18 +20,14 @@ jobs:
           submodules: recursive
 
       - name: Setup Theos
-        uses: themistervink/setup-theos@v1.2
-        with:
-          theos-src: 'https://github.com/theos/theos.git'
+        uses: Randomblock1/theos-action@v1
 
       - name: Setup iOS SDKs
         run: |
-          rm -rf ${{ github.workspace }}/theos/sdks
-          git clone https://github.com/theos/sdks.git ${{ github.workspace }}/theos/sdks
+          git clone https://github.com/theos/sdks.git $THEOS/sdks
 
       - name: Build Tweak
         run: |
-          export THEOS=${{ github.workspace }}/theos
           export THEOS_PACKAGE_SCHEME=rootless
           make clean package FINALPACKAGE=1
         
@@ -39,7 +35,6 @@ jobs:
         run: |
           mkdir -p output
           cp packages/*.deb output/
-          # No standalone .dylib here as it's a complex multi-bundle project
 
       - name: Release
         uses: softprops/action-gh-release@v2
