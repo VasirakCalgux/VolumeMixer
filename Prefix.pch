@@ -34,10 +34,13 @@
 
 #import <UIKit/UIKit.h>
 #import <xpc/xpc.h>
+#import <dlfcn.h>
 #ifdef __cplusplus
 extern "C" {
 #endif
-xpc_connection_t xpc_connection_create_mach_service(const char *name, dispatch_queue_t targetq, uint64_t flags);
+#undef xpc_connection_create_mach_service
+#define xpc_connection_create_mach_service(name, q, flags) \
+    ((xpc_connection_t (*)(const char *, dispatch_queue_t, uint64_t))dlsym(RTLD_DEFAULT, "xpc_connection_create_mach_service"))(name, q, flags)
 #ifdef __cplusplus
 }
 #endif
