@@ -1,0 +1,57 @@
+name: Build and Release VolumeMixer
+
+on:
+  push:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build:
+    name: Build VolumeMixer
+    runs-on: macos-latest
+    permissions:
+      contents: write
+    
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Setup Theos
+        uses: themistervink/setup-theos@v1.2
+        with:
+          theos-src: 'https://github.com/theos/theos.git'
+
+      - name: Setup iOS SDKs
+        run: |
+          rm -rf ${{ github.workspace }}/theos/sdks
+          git clone https://github.com/theos/sdks.git ${{ github.workspace }}/theos/sdks
+
+      - name: Build Tweak
+        run: |
+          export THEOS=${{ github.workspace }}/theos
+          export THEOS_PACKAGE_SCHEME=rootless
+          make clean package FINALPACKAGE=1
+        
+      - name: Prepare Artifacts
+        run: |
+          mkdir -p output
+          cp packages/*.deb output/
+          # No standalone .dylib here as it's a complex multi-bundle project
+
+      - name: Release
+        uses: softprops/action-gh-release@v2
+        if: success()
+        with:
+          tag_name: "v${{ github.run_number }}"
+          name: "VolumeMixer v${{ github.run_number }} (Rootless)"
+          files: |
+            output/*.deb
+          body: |
+            Automated build for VolumeMixer.
+            - Rootless Support
+            - Volume Boost (up to 2000%)
+            - Individual App Volume Control
+          token: ${{ secrets.GITHUB_TOKEN }}
